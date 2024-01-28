@@ -2,16 +2,19 @@ function getIt () {
   const apiKey = "ZcLKnh1pUAzH3DNO64glYWZ9494pa3P6aN3VBdd2";
   const apiUrl = 'https://api.printful.com/orders';
 
+  console.log(`Bearer ${apiKey}`);
 async function fetchProducts() {
   fetch(`${apiUrl}`, {
     method: "GET",
+    mode: "no-cors",
     headers: {
-      Authorization: `Basic ${btoa(apiKey)}`,
+      Authorization: `Bearer ${btoa(apiKey)}`,
       Connection: `keep-alive`,
       Accept: `*/*`,
     },
   })
     .then((response) => {
+      console.log(response)
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
